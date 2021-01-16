@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <div id="app">
+       <img :src="imgSrc" width="600px" height="500px"/>
+ </div>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    new Vue(
+        {
+            el:'#app',
+            data(){
+                return{
+                    imgSrc:''
+                }
+            },
+            mounted(){
+                axios.get('http://127.0.0.1:8080/fileShow')
+                    .then(
+                        r=>{
+                            this.imgSrc=r.data;
+                            console.log(r.data)
+                        }
+                    )
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+            }
+        }
+    )
+</script>
+</body>
+</html>

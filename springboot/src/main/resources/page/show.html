@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <div id="app">
+     <table border=1 cellspacing="0" cellpadding="0" width="1200px" height="400px">
+         <tr>
+             <th>编号</th>
+             <th>用户名</th>
+             <th>密码</th>
+             <th>电话</th>
+             <th>身份证照片</th>
+         </tr>
+         <tr v-for="user in users">
+             <td>{{user.id}}</td>
+             <td>{{user.username}}</td>
+             <td>{{user.password}}</td>
+             <td>{{user.tel}}</td>
+             <td><img :src="user.img" alt="" width="100px" height="100px"></td>
+         </tr>
+
+     </table>
+ </div>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    new Vue(
+        {
+            el:'#app',
+            data(){
+                return{
+                    users:''
+                }
+            },
+            mounted(){
+                axios.get('http://127.0.0.1:8080/user/list')
+                    .then(
+                        r=>{
+                            this.users=r.data.data;
+                            console.log(r.data.data)
+                        }
+                    )
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+            }
+        }
+    )
+</script>
+</body>
+</html>

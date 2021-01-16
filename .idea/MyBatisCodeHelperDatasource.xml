@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MyBatisCodeHelperDatasource">
+    <option name="projectProfile">
+      <ProjectProfile>
+        <option name="addSerializeUid" value="true" />
+        <option name="generateService" value="true" />
+        <option name="generateServiceInterface" value="true" />
+        <option name="javaMapperPackage" value="com.cjw.redis.mapper" />
+        <option name="javaMapperPath" value="$PROJECT_DIR$/redisSys/src/main/java" />
+        <option name="javaModelPackage" value="com.cjw.redis.model" />
+        <option name="javaModelPath" value="$PROJECT_DIR$/redisSys/src/main/java" />
+        <option name="lastDatabaseCrudChooseModuleName" value="redisSys" />
+        <option name="lombokDataAnnotation" value="true" />
+        <option name="moduleNameToPackageAndPathMap">
+          <map>
+            <entry key="PowerSystem">
+              <value>
+                <UserPackageAndPathInfoByModule>
+                  <option name="javaMapperPackage" value="com.cjw.boot.mapper" />
+                  <option name="javaMapperPath" value="$PROJECT_DIR$/PowerSystem/src/main/java" />
+                  <option name="javaModelPacakge" value="com.cjw.boot.model" />
+                  <option name="javaModelPath" value="$PROJECT_DIR$/PowerSystem/src/main/java" />
+                  <option name="javaServiceInterfacePackage" value="com.cjw.boot.service" />
+                  <option name="javaServiceInterfacePath" value="$PROJECT_DIR$/PowerSystem/src/main/java" />
+                  <option name="javaServicePackage" value="com.cjw.boot.service.impl" />
+                  <option name="javaServicePath" value="$PROJECT_DIR$/PowerSystem/src/main/java" />
+                  <option name="xmlPackage" value="mapperxml" />
+                  <option name="xmlPath" value="$PROJECT_DIR$/PowerSystem/src/main/resources" />
+                </UserPackageAndPathInfoByModule>
+              </value>
+            </entry>
+            <entry key="redisSys">
+              <value>
+                <UserPackageAndPathInfoByModule>
+                  <option name="javaMapperPackage" value="com.cjw.redis.mapper" />
+                  <option name="javaMapperPath" value="$PROJECT_DIR$/redisSys/src/main/java" />
+                  <option name="javaModelPacakge" value="com.cjw.redis.model" />
+                  <option name="javaModelPath" value="$PROJECT_DIR$/redisSys/src/main/java" />
+                  <option name="javaServiceInterfacePackage" value="com.cjw.redis.service" />
+                  <option name="javaServiceInterfacePath" value="$PROJECT_DIR$/redisSys/src/main/java" />
+                  <option name="javaServicePackage" value="com.cjw.redis.service.impl" />
+                  <option name="javaServicePath" value="$PROJECT_DIR$/redisSys/src/main/java" />
+                  <option name="xmlPackage" value="mapperxml" />
+                  <option name="xmlPath" value="$PROJECT_DIR$/redisSys/src/main/resources" />
+                </UserPackageAndPathInfoByModule>
+              </value>
+            </entry>
+            <entry key="springboot">
+              <value>
+                <UserPackageAndPathInfoByModule>
+                  <option name="javaMapperPackage" value="com.cjw.boot.mapper" />
+                  <option name="javaMapperPath" value="$PROJECT_DIR$/springboot/src/main/java" />
+                  <option name="javaModelPacakge" value="com.cjw.boot.model" />
+                  <option name="javaModelPath" value="$PROJECT_DIR$/springboot/src/main/java" />
+                  <option name="javaServiceInterfacePackage" value="com.cjw.boot.service" />
+                  <option name="javaServiceInterfacePath" value="$PROJECT_DIR$/springboot/src/main/java" />
+                  <option name="javaServicePackage" value="com.cjw.boot.service.impl" />
+                  <option name="javaServicePath" value="$PROJECT_DIR$/springboot/src/main/java" />
+                  <option name="xmlPackage" value="mapperxml" />
+                  <option name="xmlPath" value="$PROJECT_DIR$/springboot/src/main/resources" />
+                </UserPackageAndPathInfoByModule>
+              </value>
+            </entry>
+          </map>
+        </option>
+        <option name="mybatisPlusIdType" value="AUTO" />
+        <option name="removeTablePreName" value="t_" />
+        <option name="tableGenerateConfigs">
+          <map>
+            <entry key="springtest:t_route">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="id" />
+                  <option name="javaModelName" value="Route" />
+                  <option name="moduleName" value="redisSys" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="springtest:t_score">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="id" />
+                  <option name="javaModelName" value="Score" />
+                  <option name="moduleName" value="springboot" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="springtest:t_user">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="id" />
+                  <option name="javaModelName" value="User" />
+                  <option name="moduleName" value="redisSys" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+          </map>
+        </option>
+        <option name="userMybatisPlus" value="true" />
+        <option name="xmlMapperPackage" value="mapperxml" />
+        <option name="xmlMapperPath" value="$PROJECT_DIR$/redisSys/src/main/resources" />
+      </ProjectProfile>
+    </option>
+  </component>
+</project>
