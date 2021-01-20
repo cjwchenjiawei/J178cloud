@@ -42,7 +42,15 @@
              <td>{{guestOrder.movie.moviePrice}}</td>
              <td>{{guestOrder.number}}</td>
              <td>{{guestOrder.price}}</td>
-             <td>{{guestOrder.status === 0 ? "支付成功 ,出票中" : "已出票"}}</td>
+             <td>
+                 <span v-if="guestOrder.state==0?true:false">支付中</span>
+                 <span v-if="guestOrder.state==1?true:false">支付成功,出票中</span>
+                 <span v-if="guestOrder.state==2?true:false">出票成功</span>
+<!--                 <input type="text" v-if="guestOrder.state==0?true:false" value="支付中">-->
+<!--                 <input type="text" v-if="guestOrder.state==1?true:false" value="支付成功,出票中">-->
+<!--                 <input type="text" v-if="guestOrder.state==2?true:false" value="出票成功">-->
+<!--                 {{guestOrder.state==1?"支付成功,出票中":"出票成功"}}-->
+             </td>
          </tr>
      </table>
  </div>

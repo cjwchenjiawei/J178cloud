@@ -23,7 +23,7 @@
              <td>{{movieOrder.movie.moviePrice}}</td>
              <td>{{movieOrder.number}}</td>
              <td>{{movieOrder.price}}</td>
-             <td>{{movieOrder.state === 0 ? "支付成功 ,出票中" : "已出票"}}</td>
+             <td>{{movieOrder.state == 1 ? "支付成功 ,出票中" : "出票成功"}}</td>
          </tr>
      </table>
  </div>

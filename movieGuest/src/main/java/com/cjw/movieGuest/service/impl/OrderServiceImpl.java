@@ -54,11 +54,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Integer updateState(long orderNumber) {
-        GuestOrder guestOrder = new GuestOrder();
-        guestOrder.setState(1);
-        guestOrder.setOrderNumber(orderNumber);
-        int i = guestOrderMapper.updateByOrderNumber(orderNumber);
-        return i;
+        return guestOrderMapper.updateByOrderNumber(orderNumber);
     }
 
 

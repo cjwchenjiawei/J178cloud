@@ -1,9 +1,6 @@
 package com.cjw.movieOrder.config;
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.DirectExchange;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +10,9 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class SysConfig implements WebMvcConfigurer {
@@ -33,9 +33,34 @@ public class SysConfig implements WebMvcConfigurer {
         return new RabbitTemplate(connectionFactory);
     }
 
+    //死信队列
+    @Bean
+    public  Queue deadQueue(){
+        return new Queue("deadQueue");
+    }
+    //死信交换机
+    @Bean
+    public DirectExchange deadExchange(){
+        return  new DirectExchange("deadExchange");
+    }
+
+    //死信交换机队列绑定
+    @Bean
+    public Binding deadQueueToDeadExchange(Queue deadQueue,DirectExchange deadExchange){
+        return  BindingBuilder.bind(deadQueue).to(deadExchange).with("dead_routing_key");
+    }
+
     @Bean
     public Queue queueOrder(){
-        return new Queue("order");
+//关联死信交换机
+        Map<String, Object> args = new HashMap<>(3);
+        // x-dead-letter-exchange    这里声明当前队列绑定的死信交换机
+        args.put("x-dead-letter-exchange", "deadExchange");
+        // x-dead-letter-routing-key  这里声明当前队列的死信路由key
+        args.put("x-dead-letter-routing-key","dead_routing_key");
+        // x-message-ttl  声明队列的TTL
+        args.put("x-message-ttl",30000);
+        return QueueBuilder.durable("order").withArguments(args).build();
     }
 
     @Bean
