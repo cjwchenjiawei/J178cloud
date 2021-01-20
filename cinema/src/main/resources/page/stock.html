@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>影院票务</title>
+</head>
+<body>
+ <div id="app">
+     <table border=1 cellspacing="0" cellpadding="0" width="1200px" height="400px">
+         <tr>
+             <th>电影名称</th>
+             <th>电影场次</th>
+             <th>电影价格</th>
+             <th>余票</th>
+         </tr>
+         <tr v-for="movieStock in movieStocks">
+             <td>{{movieStock.movie.movieName}}</td>
+             <td>{{movieStock.movie.movieTime}}</td>
+             <td>{{movieStock.movie.moviePrice}}</td>
+             <td>{{movieStock.number}}</td>
+         </tr>
+     </table>
+
+ </div>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    new Vue(
+        {
+            el:'#app',
+            data(){
+                return{
+                    movieStocks:'',
+                    movieOrders:''
+                }
+            },
+            mounted(){
+                axios.get('http://127.0.0.1:8004/movieStock/list')
+                    .then(
+                        r=>{
+                            this.movieStocks=r.data;
+                            console.log(r.data)
+                        }
+                    )
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+
+
+            }
+        }
+    )
+</script>
+</body>
+</html>

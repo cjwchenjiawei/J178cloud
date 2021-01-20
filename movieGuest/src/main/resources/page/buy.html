@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户购票</title>
+</head>
+<body>
+ <div id="app">
+     <table border=1 cellspacing="0" cellpadding="0" width="1200px" height="200px">
+         <tr>
+             <th>电影名称</th>
+             <th>电影场次</th>
+             <th>电影价格</th>
+             <th>余票</th>
+             <th>操作</th>
+         </tr>
+         <tr v-for="movieStock in movieStocks">
+             <td>{{movieStock.movie.movieName}}</td>
+             <td>{{movieStock.movie.movieTime}}</td>
+             <td>{{movieStock.movie.moviePrice}}</td>
+             <td>{{movieStock.number}}</td>
+             <td><input type="button" @click="handleClick(movieStock.movie.id)" value="购票"></td>
+         </tr>
+     </table>
+     <br>
+     <br>
+     <br>
+     <table border=1 cellspacing="0" cellpadding="0" width="1200px" height="200px">
+         <tr>
+             <th>订单编号</th>
+             <th>电影名称</th>
+             <th>电影场次</th>
+             <th>电影价格</th>
+             <th>订单票数</th>
+             <th>订单金额</th>
+             <th>订单状态</th>
+         </tr>
+         <tr v-for="guestOrder in guestOrders">
+             <td>{{guestOrder.orderNumber}}</td>
+             <td>{{guestOrder.movie.movieName}}</td>
+             <td>{{guestOrder.movie.movieTime}}</td>
+             <td>{{guestOrder.movie.moviePrice}}</td>
+             <td>{{guestOrder.number}}</td>
+             <td>{{guestOrder.price}}</td>
+             <td>{{guestOrder.status === 0 ? "支付成功 ,出票中" : "已出票"}}</td>
+         </tr>
+     </table>
+ </div>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    new Vue(
+        {
+            el:'#app',
+            data(){
+                return{
+                    movieStocks:'',
+                    guestOrders:''
+                }
+            },
+            mounted(){
+                axios.get('http://127.0.0.1:8004/movieStock/list')
+                    .then(
+                        r=>{
+                            this.movieStocks=r.data;
+                            console.log(r.data)
+                        }
+                    )
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+
+                axios.get('http://127.0.0.1:8002/guestOrder/list')
+                    .then(
+                        r=>{
+                            this.guestOrders=r.data;
+                            console.log(r.data)
+                        }
+                    )
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+            },
+            methods:{
+                handleClick(e) {
+                    axios({
+                        method: 'post',
+                        url:'http://127.0.0.1:8002/order/buy',
+                        params: {
+                            movieId:e,
+                        }
+                    }).then(res => {
+                        if (res.data != null) {
+                            let msg = res.data;
+                            alert(msg)
+                        }
+                    })
+                }
+            }
+        }
+    )
+</script>
+</body>
+</html>

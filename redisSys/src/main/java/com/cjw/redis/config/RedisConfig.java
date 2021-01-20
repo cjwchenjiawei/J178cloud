@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.redisson.Redisson;
+import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
 import org.redisson.config.SingleServerConfig;
@@ -54,5 +55,13 @@ public class RedisConfig {
 //        singleServerConfig.setPassword("123456");
 
         return Redisson.create(config);
+    }
+
+    public static RLock rLock() {
+        Config config = new Config();
+        SingleServerConfig singleServerConfig = config.useSingleServer();
+        singleServerConfig.setAddress("redis://127.0.0.1:"+8000);
+        singleServerConfig.setTimeout(300);
+        return Redisson.create(config).getLock("J178");
     }
 }

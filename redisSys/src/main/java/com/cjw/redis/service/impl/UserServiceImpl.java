@@ -2,6 +2,7 @@ package com.cjw.redis.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.cjw.redis.config.RedisCacheUtil;
+import com.cjw.redis.config.RedisConfig;
 import com.cjw.util.StringUtil;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
@@ -19,9 +20,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Autowired
     private RedisCacheUtil redisCacheUtil;
-
-    @Autowired
-    private RedissonClient redisson;
 
 
     @Override
@@ -86,11 +84,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             //3、如果没有拿到锁，休眠400毫秒，醒后去查询缓存。如果缓存没有继续上一步
 
             /**
-             * 得到一把公共锁
+             * 获取锁
              */
-            RLock lock = redisson.getLock("j178");
             try {
-                if(lock.tryLock(4,2,TimeUnit.SECONDS)){
+                if(RedisConfig.rLock().tryLock(StringUtil.WAIT_TIME,StringUtil.GET_TIME,TimeUnit.SECONDS)){
                     //缓存中不存在
                     list = this.list(new QueryWrapper<User>().eq("username", username).eq("password", password));
                     //放入缓存
@@ -107,10 +104,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
                     }
                 }else {
                     Thread.sleep(400);
-                    return this.findUserList2(username,password);
+                    this.findUserList2(username,password);
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            } finally {
+                if (!RedisConfig.rLock().isLocked()){
+                    RedisConfig.rLock().unlock();
+                }
+                RedisConfig.rLock().unlock();
             }
 
         }

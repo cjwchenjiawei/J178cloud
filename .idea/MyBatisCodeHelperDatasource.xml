@@ -6,11 +6,11 @@
         <option name="addSerializeUid" value="true" />
         <option name="generateService" value="true" />
         <option name="generateServiceInterface" value="true" />
-        <option name="javaMapperPackage" value="com.cjw.redis.mapper" />
-        <option name="javaMapperPath" value="$PROJECT_DIR$/redisSys/src/main/java" />
-        <option name="javaModelPackage" value="com.cjw.redis.model" />
-        <option name="javaModelPath" value="$PROJECT_DIR$/redisSys/src/main/java" />
-        <option name="lastDatabaseCrudChooseModuleName" value="redisSys" />
+        <option name="javaMapperPackage" value="com.cjw.movieOrder.mapper" />
+        <option name="javaMapperPath" value="$PROJECT_DIR$/movieOrder/src/main/java" />
+        <option name="javaModelPackage" value="com.cjw.movieOrder.model" />
+        <option name="javaModelPath" value="$PROJECT_DIR$/movieOrder/src/main/java" />
+        <option name="lastDatabaseCrudChooseModuleName" value="movieOrder" />
         <option name="lombokDataAnnotation" value="true" />
         <option name="moduleNameToPackageAndPathMap">
           <map>
@@ -27,6 +27,54 @@
                   <option name="javaServicePath" value="$PROJECT_DIR$/PowerSystem/src/main/java" />
                   <option name="xmlPackage" value="mapperxml" />
                   <option name="xmlPath" value="$PROJECT_DIR$/PowerSystem/src/main/resources" />
+                </UserPackageAndPathInfoByModule>
+              </value>
+            </entry>
+            <entry key="cinema">
+              <value>
+                <UserPackageAndPathInfoByModule>
+                  <option name="javaMapperPackage" value="com.cjw.cinema.mapper" />
+                  <option name="javaMapperPath" value="$PROJECT_DIR$/cinema/src/main/java" />
+                  <option name="javaModelPacakge" value="com.cjw.cinema.model" />
+                  <option name="javaModelPath" value="$PROJECT_DIR$/cinema/src/main/java" />
+                  <option name="javaServiceInterfacePackage" value="com.cjw.cinema.service" />
+                  <option name="javaServiceInterfacePath" value="$PROJECT_DIR$/cinema/src/main/java" />
+                  <option name="javaServicePackage" value="com.cjw.cinema.service.impl" />
+                  <option name="javaServicePath" value="$PROJECT_DIR$/cinema/src/main/java" />
+                  <option name="xmlPackage" value="mapperxml" />
+                  <option name="xmlPath" value="$PROJECT_DIR$/cinema/src/main/resources" />
+                </UserPackageAndPathInfoByModule>
+              </value>
+            </entry>
+            <entry key="movieGuest">
+              <value>
+                <UserPackageAndPathInfoByModule>
+                  <option name="javaMapperPackage" value="com.cjw.movieGuest.mapper" />
+                  <option name="javaMapperPath" value="$PROJECT_DIR$/movieGuest/src/main/java" />
+                  <option name="javaModelPacakge" value="com.cjw.movieGuest.model" />
+                  <option name="javaModelPath" value="$PROJECT_DIR$/movieGuest/src/main/java" />
+                  <option name="javaServiceInterfacePackage" value="com.cjw.movieGuest.service" />
+                  <option name="javaServiceInterfacePath" value="$PROJECT_DIR$/movieGuest/src/main/java" />
+                  <option name="javaServicePackage" value="com.cjw.movieGuest.service.impl" />
+                  <option name="javaServicePath" value="$PROJECT_DIR$/movieGuest/src/main/java" />
+                  <option name="xmlPackage" value="mapperxml" />
+                  <option name="xmlPath" value="$PROJECT_DIR$/movieGuest/src/main/resources" />
+                </UserPackageAndPathInfoByModule>
+              </value>
+            </entry>
+            <entry key="movieOrder">
+              <value>
+                <UserPackageAndPathInfoByModule>
+                  <option name="javaMapperPackage" value="com.cjw.movieOrder.mapper" />
+                  <option name="javaMapperPath" value="$PROJECT_DIR$/movieOrder/src/main/java" />
+                  <option name="javaModelPacakge" value="com.cjw.movieOrder.model" />
+                  <option name="javaModelPath" value="$PROJECT_DIR$/movieOrder/src/main/java" />
+                  <option name="javaServiceInterfacePackage" value="com.cjw.movieOrder.service" />
+                  <option name="javaServiceInterfacePath" value="$PROJECT_DIR$/movieOrder/src/main/java" />
+                  <option name="javaServicePackage" value="com.cjw.movieOrder.service.impl" />
+                  <option name="javaServicePath" value="$PROJECT_DIR$/movieOrder/src/main/java" />
+                  <option name="xmlPackage" value="mapperxml" />
+                  <option name="xmlPath" value="$PROJECT_DIR$/movieOrder/src/main/resources" />
                 </UserPackageAndPathInfoByModule>
               </value>
             </entry>
@@ -68,6 +116,54 @@
         <option name="removeTablePreName" value="t_" />
         <option name="tableGenerateConfigs">
           <map>
+            <entry key="springtest:t_guest_order">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="id" />
+                  <option name="javaModelName" value="GuestOrder" />
+                  <option name="moduleName" value="movieGuest" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="springtest:t_movie">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="id" />
+                  <option name="javaModelName" value="Movie" />
+                  <option name="moduleName" value="movieOrder" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="springtest:t_movie_order">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="id" />
+                  <option name="javaModelName" value="MovieOrder" />
+                  <option name="moduleName" value="movieGuest" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="springtest:t_movie_stock">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="id" />
+                  <option name="javaModelName" value="MovieStock" />
+                  <option name="moduleName" value="cinema" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
             <entry key="springtest:t_route">
               <value>
                 <TableGenerateConfig>
@@ -104,7 +200,7 @@
         </option>
         <option name="userMybatisPlus" value="true" />
         <option name="xmlMapperPackage" value="mapperxml" />
-        <option name="xmlMapperPath" value="$PROJECT_DIR$/redisSys/src/main/resources" />
+        <option name="xmlMapperPath" value="$PROJECT_DIR$/movieOrder/src/main/resources" />
       </ProjectProfile>
     </option>
   </component>

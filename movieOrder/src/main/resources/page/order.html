@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单列表</title>
+</head>
+<body>
+ <div id="app">
+     <table border=1 cellspacing="0" cellpadding="0" width="1200px" height="400px">
+         <tr>
+             <th>订单编号</th>
+             <th>电影名称</th>
+             <th>电影场次</th>
+             <th>电影价格</th>
+             <th>订单票数</th>
+             <th>订单金额</th>
+             <th>订单状态</th>
+         </tr>
+         <tr v-for="movieOrder in movieOrders">
+             <td>{{movieOrder.orderNumber}}</td>
+             <td>{{movieOrder.movie.movieName}}</td>
+             <td>{{movieOrder.movie.movieTime}}</td>
+             <td>{{movieOrder.movie.moviePrice}}</td>
+             <td>{{movieOrder.number}}</td>
+             <td>{{movieOrder.price}}</td>
+             <td>{{movieOrder.state === 0 ? "支付成功 ,出票中" : "已出票"}}</td>
+         </tr>
+     </table>
+ </div>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    new Vue(
+        {
+            el:'#app',
+            data(){
+                return{
+                    movieStocks:'',
+                    movieOrders:''
+                }
+            },
+            mounted(){
+                axios.get('http://127.0.0.1:8003/order/list')
+                    .then(
+                        r=>{
+                            this.movieOrders=r.data;
+                            console.log(r.data)
+                        }
+                    )
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+            }
+        }
+    )
+</script>
+</body>
+</html>
