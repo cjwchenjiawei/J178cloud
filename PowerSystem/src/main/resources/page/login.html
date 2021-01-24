@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+</head>
+<body>
+<div class="container" id="app">
+    <div class="container" style="display: flex;justify-content: center;margin-top: 100px;">
+        <form>
+            <input class="text-input-dialog" type="text" v-model="username" placeholder="username">
+            <input class="text-input-dialog" type="password" v-model="password" placeholder="password">
+            <input type="button" value="登陆" @click="toAuth">
+        </form>
+
+    </div>
+    <div v-if="isAuthorized">
+        <h3>用户认证成功</h3>
+        <h3>令牌: {{token}}</h3><br>
+        <div class="container" style="text-align: center">
+            <a type="button" :href="url"><span style="color: blue">Open OrderSystem</span></a>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            username: '',
+            password: '',
+            token: '',
+            url: '/order/index',
+            isAuthorized: false
+        },
+        methods: {
+            toAuth() {
+                /*先去验证,返回用户token*/
+                axios.get('/power/tokenInfo/' + this.username + "/" + this.password)
+                    .then(
+                        res => {
+                            console.log(res.data);
+                            this.token = res.data;
+                            this.isAuthorized = true;
+                            this.url = this.url + "/" + this.token
+                            console.log(this.url)
+                        }
+                    )
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+            },
+        }
+    });
+</script>
+</body>
+</html>

@@ -16,8 +16,7 @@ import java.util.List;
 public class OrderController {
     @Autowired
     private MovieOrderService movieOrderService;
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
+
 
     @GetMapping("/order/list")
     public List<MovieOrder> orderList(){
@@ -27,6 +26,7 @@ public class OrderController {
     RabbitTemplate.ConfirmCallback callback=(CorrelationData correlationData, boolean b, String s)->{
         //获得MQ返回的唯一标志orderNum
         long id=  Long.parseLong(correlationData.getId());
+        System.out.println("id ======" + id);
         if (b){
             Integer n = movieOrderService.updateState1(id);
         }
@@ -35,28 +35,7 @@ public class OrderController {
     @PostMapping("/order/buy")
     public String buy (@RequestBody MovieOrderDto movieOrderDto){
         System.out.println("movieOrderDto = " + movieOrderDto);
-        MovieOrder movieOrder = new MovieOrder();
-        movieOrder.setFkMovieId(movieOrderDto.getMovieId());
-        movieOrder.setOrderNumber(movieOrderDto.getOrderNumber());
-        movieOrder.setNumber(movieOrderDto.getNumber());
-        movieOrder.setPrice(movieOrderDto.getPrice());
-        movieOrder.setState(movieOrderDto.getState());
-        boolean save = movieOrderService.save(movieOrder);
-        if (save){
-            System.out.println("movieOrder = " + movieOrder);
-            movieOrderDto.setId(movieOrder.getId());
-            //开启手动确认
-            //开启消息确认
-            rabbitTemplate.setMandatory(true);
-            //绑定回调函数
-            rabbitTemplate.setConfirmCallback(callback);
-            //组装关联数据
-            CorrelationData correlationData=new CorrelationData(String.valueOf(movieOrderDto.getOrderNumber()));
-            rabbitTemplate.convertAndSend("directExchange","j178.order",movieOrderDto,correlationData);
-            return StringUtil.BUY_OK;
-        }else {
-            return StringUtil.BUY_NO;
-        }
+        return movieOrderService.buy(movieOrderDto);
     }
 
     @PutMapping("/order/updateState")

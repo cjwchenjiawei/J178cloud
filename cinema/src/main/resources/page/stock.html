@@ -35,7 +35,7 @@
                 }
             },
             mounted(){
-                axios.get('http://127.0.0.1:8004/movieStock/list')
+                axios.get('http://127.0.0.1:8888/movieStock/list')
                     .then(
                         r=>{
                             this.movieStocks=r.data;

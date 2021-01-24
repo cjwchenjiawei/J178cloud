@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="UtilSystem" />
+        <module name="clientSys" />
         <module name="PowerSystem" />
         <module name="rabbitmqClient" />
         <module name="movieGuest" />
@@ -26,6 +27,7 @@
       <module name="System" options="-parameters" />
       <module name="UtilSystem" options="-parameters" />
       <module name="cinema" options="-parameters" />
+      <module name="clientSys" options="-parameters" />
       <module name="movieGuest" options="-parameters" />
       <module name="movieOrder" options="-parameters" />
       <module name="rabbitmq" options="-parameters" />

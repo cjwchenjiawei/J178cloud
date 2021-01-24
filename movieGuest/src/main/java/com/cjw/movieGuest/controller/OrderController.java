@@ -22,16 +22,17 @@ public class OrderController {
     private GuestOrderService guestOrderService;
     @Autowired
     private TestService testService;
-    @PostMapping("/order/buy")
+
+    @PostMapping("/guest/buy")
     public String buy(@RequestParam("movieId")Integer movieId){
         System.out.println("movieId = " + movieId);
         return orderService.buy(movieId, 1);
     }
 
-    @PutMapping("/order/updateState")
-    public String updateState(@RequestBody MovieOrderDto movieOrderDto) {
+    @PutMapping("/order/updateState1")
+    public String updateState1(@RequestBody MovieOrderDto movieOrderDto) {
         long orderNumber = movieOrderDto.getOrderNumber();
-        Integer n = orderService.updateState(orderNumber);
+        Integer n = orderService.updateState1(orderNumber);
         if (n > 0) {
             return StringUtil.UPDATE_OK;
         } else {
@@ -39,7 +40,18 @@ public class OrderController {
         }
     }
 
-    @GetMapping("/guestOrder/list")
+    @PutMapping("/order/updateState2")
+    public String updateState2(@RequestBody MovieOrderDto movieOrderDto) {
+        long orderNumber = movieOrderDto.getOrderNumber();
+        Integer n = orderService.updateState2(orderNumber);
+        if (n > 0) {
+            return StringUtil.UPDATE_OK;
+        } else {
+            return StringUtil.UPDATE_ERROR;
+        }
+    }
+
+    @GetMapping("/guest/orderList")
     public List<GuestOrder>list(){
         return guestOrderService.orderList();
     }

@@ -6,6 +6,16 @@ spring:
     port: 5672
     username: admin
     password: 123456
+    publisher-confirm-type: correlated
+    virtual-host: /
+    listener:
+      simple:
+        acknowledge-mode: manual  #开启ACK
+        retry:
+          max-attempts: 5  #重试次数
+          initial-interval: 5000  #重试间隔时间
+          enabled: true  #开启消费重试
+        default-requeue-rejected: false  #重试次数超过上面的设置之后是否丢弃（false不丢弃时需要写相应代码将该消息加入死信队列
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/springtest?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
@@ -46,3 +56,8 @@ spring:
         logic-not-delete-value: 0
         # 删除后
         logic-delete-value: 1
+  application:
+    name: orderSys
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848

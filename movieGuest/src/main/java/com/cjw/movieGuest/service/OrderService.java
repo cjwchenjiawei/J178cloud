@@ -7,6 +7,8 @@ public interface OrderService {
 
     public String buy(Integer movieId,Integer number);
 
+    Integer updateState1(long orderNumber);
 
-    Integer updateState(long orderNumber);
+    Integer updateState2(long orderNumber);
+
 }

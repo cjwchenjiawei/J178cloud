@@ -53,9 +53,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Integer updateState(long orderNumber) {
-        return guestOrderMapper.updateByOrderNumber(orderNumber);
+    public Integer updateState2(long orderNumber) {
+        return guestOrderMapper.updateByOrderNumber2(orderNumber);
     }
 
-
+    @Override
+    public Integer updateState1(long orderNumber) {
+        return guestOrderMapper.updateByOrderNumber1(orderNumber);
+    }
 }

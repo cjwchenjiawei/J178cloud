@@ -73,6 +73,8 @@ public class SysConfig implements WebMvcConfigurer {
         return BindingBuilder.bind(queueOrder).to(directExchange).with("j178.order");
     }
 
+
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/page/**")

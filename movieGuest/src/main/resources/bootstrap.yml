@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: guestSys
+  cloud:
+    nacos:
+      config:
+        prefix: guest
+        file-extension: yml
+      server-addr: 127.0.0.1:8848
+  profiles:
+    active: dev

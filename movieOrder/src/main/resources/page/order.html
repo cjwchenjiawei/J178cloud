@@ -23,7 +23,11 @@
              <td>{{movieOrder.movie.moviePrice}}</td>
              <td>{{movieOrder.number}}</td>
              <td>{{movieOrder.price}}</td>
-             <td>{{movieOrder.state == 1 ? "支付成功 ,出票中" : "出票成功"}}</td>
+             <td>
+                 <span v-if="movieOrder.state==0?true:false">支付中</span>
+                 <span v-if="movieOrder.state==1?true:false">支付成功,出票中</span>
+                 <span v-if="movieOrder.state==2?true:false">出票成功</span>
+             </td>
          </tr>
      </table>
  </div>
@@ -40,7 +44,7 @@
                 }
             },
             mounted(){
-                axios.get('http://127.0.0.1:8003/order/list')
+                axios.get('http://127.0.0.1:8888/order/list')
                     .then(
                         r=>{
                             this.movieOrders=r.data;

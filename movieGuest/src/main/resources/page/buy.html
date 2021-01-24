@@ -67,7 +67,7 @@
                 }
             },
             mounted(){
-                axios.get('http://127.0.0.1:8004/movieStock/list')
+                axios.get('http://127.0.0.1:8888/movieStock/list')
                     .then(
                         r=>{
                             this.movieStocks=r.data;
@@ -78,7 +78,7 @@
                         console.log(error);
                     });
 
-                axios.get('http://127.0.0.1:8002/guestOrder/list')
+                axios.get('http://127.0.0.1:8888/guest/orderList')
                     .then(
                         r=>{
                             this.guestOrders=r.data;
@@ -93,7 +93,7 @@
                 handleClick(e) {
                     axios({
                         method: 'post',
-                        url:'http://127.0.0.1:8002/order/buy',
+                        url:'http://127.0.0.1:8002/guest/buy',
                         params: {
                             movieId:e,
                         }

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PowerController {
 @Autowired
 private UserMapper userMapper;
-    @GetMapping("tokenInfo/{username}/{password}")
+    @GetMapping("/power/tokenInfo/{username}/{password}")
     public String tokenInfo(@PathVariable("username") String username,@PathVariable("password") String password){
         User user = userMapper.selectOneByUsernameAndPassword(username, password);
         if (user!=null){

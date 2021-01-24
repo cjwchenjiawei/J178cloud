@@ -1,4 +1,4 @@
-package com.cjw.cinema.service;
+package com.cjw.movieOrder.service;
 
 import com.cjw.dto.MovieOrderDto;
 import org.springframework.cloud.openfeign.FeignClient;
