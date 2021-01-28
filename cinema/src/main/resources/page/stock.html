@@ -20,6 +20,29 @@
              <td>{{movieStock.number}}</td>
          </tr>
      </table>
+     <br>
+     <br>
+     <br>
+     <table border=1 cellspacing="0" cellpadding="0" width="1200px" height="400px">
+         <tr>
+             <th>订单编号</th>
+             <th>电影编号</th>
+             <th>订单票数</th>
+             <th>订单金额</th>
+             <th>订单状态</th>
+         </tr>
+         <tr v-for="movieOrder in orderList">
+             <td>{{movieOrder.orderNumber}}</td>
+             <td>{{movieOrder.movieId}}</td>
+             <td>{{movieOrder.number}}</td>
+             <td>{{movieOrder.price}}</td>
+             <td>
+                 <span v-if="movieOrder.state==0?true:false">支付中</span>
+                 <span v-if="movieOrder.state==1?true:false">支付成功,出票中</span>
+                 <span v-if="movieOrder.state==2?true:false">出票成功</span>
+             </td>
+         </tr>
+     </table>
 
  </div>
 <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
@@ -31,7 +54,8 @@
             data(){
                 return{
                     movieStocks:'',
-                    movieOrders:''
+                    movieOrders:'',
+                    orderList:[]
                 }
             },
             mounted(){
@@ -45,11 +69,84 @@
                     .catch(function (error) { // 请求失败处理
                         console.log(error);
                     });
+                this.init()
+            },
+            methods:{
+                init:function () {
 
+                    if ("WebSocket" in window)
+                    {
+                        // 打开一个 web socket
+                        let ws = new WebSocket("ws://127.0.0.1:8004/socketService");
 
+                        ws.onopen = function()
+                        {
+
+                            ws.send("zy");
+
+                        };
+                        let that=this;
+                        ws.onmessage = function (evt)
+                        {
+                            let orderListStr = evt.data;
+                            console.log(orderListStr)
+                            that.orderList=   JSON.parse(orderListStr);
+                            console.log(this.orderList)
+                        };
+
+                        ws.onclose = function()
+                        {
+                            // 关闭 websocket
+                            alert("连接已关闭...");
+                        };
+                    }
+
+                    else
+                    {
+                        // 浏览器不支持 WebSocket
+                        alert("您的浏览器不支持 WebSocket!");
+                    }
+                }
             }
         }
     )
+
+    function WebSocketTest()
+    {
+        if ("WebSocket" in window)
+        {
+            // alert("您的浏览器支持 WebSocket!");
+
+            // 打开一个 web socket
+            let ws = new WebSocket("ws://127.0.0.1:8004/socketService");
+
+            ws.onopen = function()
+            {
+                // Web Socket 已连接上，使用 send() 方法发送数据
+                ws.send("我是前端页面");
+                // alert("数据发送中...");
+            };
+
+            ws.onmessage = function (evt)
+            {
+                let received_msg = evt.data;
+                console.log(received_msg)
+
+            };
+
+            ws.onclose = function()
+            {
+                // 关闭 websocket
+                alert("连接已关闭...");
+            };
+        }
+
+        else
+        {
+            // 浏览器不支持 WebSocket
+            alert("您的浏览器不支持 WebSocket!");
+        }
+    }
 </script>
 </body>
 </html>

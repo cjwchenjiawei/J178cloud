@@ -20,6 +20,11 @@
         <module>movieGuest</module>
         <module>cinema</module>
         <module>clientSys</module>
+        <module>nginxOne</module>
+        <module>nginxTwo</module>
+        <module>webservice</module>
+        <module>wsclient</module>
+        <module>es</module>
     </modules>
 
 

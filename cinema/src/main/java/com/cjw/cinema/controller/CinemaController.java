@@ -3,6 +3,7 @@ package com.cjw.cinema.controller;
 import com.cjw.cinema.model.MovieOrder;
 import com.cjw.cinema.model.MovieStock;
 import com.cjw.cinema.service.MovieStockService;
+import com.cjw.cinema.util.StringUtil;
 import com.cjw.dto.MovieOrderDto;
 import com.rabbitmq.client.Channel;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -31,6 +32,7 @@ public class CinemaController {
             e.printStackTrace();
         }
         System.out.println("movieOrderDto = " + movieOrderDto);
+        StringUtil.list.add(movieOrderDto);
         movieStockService.updateStock(movieOrderDto);
     }
 

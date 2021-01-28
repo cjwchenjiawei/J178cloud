@@ -6,11 +6,11 @@
         <option name="addSerializeUid" value="true" />
         <option name="generateService" value="true" />
         <option name="generateServiceInterface" value="true" />
-        <option name="javaMapperPackage" value="com.cjw.movieOrder.mapper" />
-        <option name="javaMapperPath" value="$PROJECT_DIR$/movieOrder/src/main/java" />
-        <option name="javaModelPackage" value="com.cjw.movieOrder.model" />
-        <option name="javaModelPath" value="$PROJECT_DIR$/movieOrder/src/main/java" />
-        <option name="lastDatabaseCrudChooseModuleName" value="movieOrder" />
+        <option name="javaMapperPackage" value="com.cjw.es.mapper" />
+        <option name="javaMapperPath" value="$PROJECT_DIR$/es/src/main/java" />
+        <option name="javaModelPackage" value="com.cjw.es.model" />
+        <option name="javaModelPath" value="$PROJECT_DIR$/es/src/main/java" />
+        <option name="lastDatabaseCrudChooseModuleName" value="es" />
         <option name="lombokDataAnnotation" value="true" />
         <option name="moduleNameToPackageAndPathMap">
           <map>
@@ -43,6 +43,22 @@
                   <option name="javaServicePath" value="$PROJECT_DIR$/cinema/src/main/java" />
                   <option name="xmlPackage" value="mapperxml" />
                   <option name="xmlPath" value="$PROJECT_DIR$/cinema/src/main/resources" />
+                </UserPackageAndPathInfoByModule>
+              </value>
+            </entry>
+            <entry key="es">
+              <value>
+                <UserPackageAndPathInfoByModule>
+                  <option name="javaMapperPackage" value="com.cjw.es.mapper" />
+                  <option name="javaMapperPath" value="$PROJECT_DIR$/es/src/main/java" />
+                  <option name="javaModelPacakge" value="com.cjw.es.model" />
+                  <option name="javaModelPath" value="$PROJECT_DIR$/es/src/main/java" />
+                  <option name="javaServiceInterfacePackage" value="com.cjw.es.service" />
+                  <option name="javaServiceInterfacePath" value="$PROJECT_DIR$/es/src/main/java" />
+                  <option name="javaServicePackage" value="com.cjw.es.service.impl" />
+                  <option name="javaServicePath" value="$PROJECT_DIR$/es/src/main/java" />
+                  <option name="xmlPackage" value="mapperxml" />
+                  <option name="xmlPath" value="$PROJECT_DIR$/es/src/main/resources" />
                 </UserPackageAndPathInfoByModule>
               </value>
             </entry>
@@ -164,6 +180,18 @@
                 </TableGenerateConfig>
               </value>
             </entry>
+            <entry key="springtest:t_news">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="id" />
+                  <option name="javaModelName" value="News" />
+                  <option name="moduleName" value="es" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
             <entry key="springtest:t_route">
               <value>
                 <TableGenerateConfig>
@@ -186,6 +214,18 @@
                 </TableGenerateConfig>
               </value>
             </entry>
+            <entry key="springtest:t_url">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="" />
+                  <option name="javaModelName" value="Url" />
+                  <option name="moduleName" value="es" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
             <entry key="springtest:t_user">
               <value>
                 <TableGenerateConfig>
@@ -200,7 +240,7 @@
         </option>
         <option name="userMybatisPlus" value="true" />
         <option name="xmlMapperPackage" value="mapperxml" />
-        <option name="xmlMapperPath" value="$PROJECT_DIR$/movieOrder/src/main/resources" />
+        <option name="xmlMapperPath" value="$PROJECT_DIR$/es/src/main/resources" />
       </ProjectProfile>
     </option>
   </component>
